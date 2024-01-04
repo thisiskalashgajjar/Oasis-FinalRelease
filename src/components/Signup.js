@@ -10,20 +10,17 @@ function Signup() {
 
         // Check if passwords match
         if (credentials.password !== credentials.confirmPassword) {
-            console.log("Passwords do not match");
-            // You can display an error message or handle it as needed
+            alert("Passwords do not match");
             return;
         }
 
         // Check password complexity
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!passwordRegex.test(credentials.password)) {
-            console.log("Password does not meet complexity requirements");
-            // You can display an error message or handle it as needed
+            alert("Password does not meet complexity requirements");
             return;
         }
 
-        // Your existing code for form submission
         const response = await fetch("http://localhost:5001/api/auth/signup", {
             method: "POST",
             mode: "cors",
